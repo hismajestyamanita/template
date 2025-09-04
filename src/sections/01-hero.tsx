@@ -63,6 +63,7 @@ export default function Hero() {
             <div className="w-16 h-64 bg-blue-500 rounded-t-full"></div>
             <div className="w-32 h-32 rounded-full bg-green-500"></div>
           </div>
+          </div>
         </div>
       </Content>
     </Section>
