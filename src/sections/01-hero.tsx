@@ -12,11 +12,11 @@ export default function Hero() {
       <Content className="text-[var(--white)] py-16 md:py-24 items-start gap-6" gapY="lg">
         <div ref={titleRef} className="max-w-2xl">
           <h1 className="h1 mb-4 uppercase">
-            Ð¡Ð´ÐµÐ»Ð°ÐµÐ¼ Ð²Ð°Ð¼ ÑÐ°Ð¹Ñ‚, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚
-            <span className="accent"> â€” Ð¸ Ð¿Ñ€Ð¾Ð´Ð°Ñ‘Ñ‚</span>
+            MODERN WEB DESIGN TEMPLATE
+            <span className="accent"> CLEAN AND FLEXIBLE</span>
           </h1>
           <p className="lead text-[var(--gray-200)] mb-6">
-            Ð§Ñ‘Ñ‚ÐºÐ°Ñ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð°, Ð°ÐºÐºÑƒÑ€Ð°Ñ‚Ð½Ð°Ñ Ñ‚Ð¸Ð¿Ð¾Ð³Ñ€Ð°Ñ„Ð¸ÐºÐ°, Ð±Ñ‹ÑÑ‚Ñ€Ð°Ñ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Ð¸ Ð¿Ð¾Ð½ÑÑ‚Ð½Ñ‹Ðµ CTA. Ð‘ÐµÐ· Ð²Ð¾Ð´Ñ‹.
+            A neutral placeholder lead paragraph without invalid characters.
           </p>
           <div className="flex gap-3">
             <a
@@ -68,6 +68,7 @@ export default function Hero() {
     </Section>
   );
 }
+
 
 
 
