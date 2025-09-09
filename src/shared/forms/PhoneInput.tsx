@@ -26,18 +26,19 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 
   const shellBase =
     size === "hero"
-      ? "h-14 md:h-14 text-base md:text-lg inline-flex w-auto px-5 md:px-6 whitespace-nowrap"
-      : "h-11 text-base w-full px-4 inline-flex";
+      ? "h-14 md:h-14 text-base md:text-lg inline-flex w-auto px-0 md:px-0 whitespace-nowrap"
+      : "h-11 text-base w-full px-0 inline-flex";
 
   return (
     <div className={["relative z-0 flex items-center", shellBase, inputClassName, "focus-within:ring-inherit"].join(" ")}>
-      <span className="select-none text-current mr-[0.5ch]">+7</span>
+      <span className="absolute left-4 select-none text-current">+7</span>
       <input
         type="tel"
         inputMode="numeric"
+        autoComplete="tel"
         className={[
-          "h-full bg-transparent outline-none border-0 focus:outline-none",
-          size === "hero" ? "w-[11.5ch] md:w-[14ch]" : "w-full flex-1",
+          "h-full bg-transparent outline-none border-0 focus:outline-none pl-10",
+          size === "hero" ? "w-[12ch] md:w-[14ch]" : "w-full flex-1",
           "placeholder-gray-400",
         ].join(" ")}
         value={fmt(value)}
@@ -49,4 +50,3 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
 };
 
 export default PhoneInput;
-

@@ -13,7 +13,7 @@ export default function useReveal<T extends HTMLElement>() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            el.classList.add('reveal-in');
+            el.classList.add('is-inview');
             io.disconnect();
           }
         });
@@ -27,4 +27,3 @@ export default function useReveal<T extends HTMLElement>() {
 
   return ref;
 }
-

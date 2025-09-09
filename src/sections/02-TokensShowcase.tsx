@@ -1,16 +1,20 @@
 import React from 'react';
-import Section from '../shared/layout/Section';
-import Content from '../shared/layout/Content';
+import Section from '@/shared/primitives/Section';
+import Content from '@/shared/primitives/Content';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import GlassCard from '@/components/GlassCard';
+import Badge from '@/components/Badge';
 
-const colorSwatches = [
-  ['primary', 'var(--primary)'],
-  ['accent', 'var(--accent)'],
-  ['black', 'var(--black)'],
-  ['white', 'var(--white)'],
-  ['gray-50', 'var(--gray-50)'],
-  ['gray-200', 'var(--gray-200)'],
-  ['gray-500', 'var(--gray-500)'],
-  ['gray-900', 'var(--gray-900)'],
+const colorSwatches: Array<[string, string]> = [
+  ['primary', 'bg-[var(--primary)]'],
+  ['accent', 'bg-[var(--accent)]'],
+  ['black', 'bg-[var(--black)]'],
+  ['white', 'bg-[var(--white)]'],
+  ['gray-50', 'bg-[var(--gray-50)]'],
+  ['gray-200', 'bg-[var(--gray-200)]'],
+  ['gray-500', 'bg-[var(--gray-500)]'],
+  ['gray-900', 'bg-[var(--gray-900)]'],
 ];
 
 export default function Showcase() {
@@ -25,9 +29,9 @@ export default function Showcase() {
         <div>
           <h3 className="button-text mb-4">Палитра</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {colorSwatches.map(([name, css]) => (
+            {colorSwatches.map(([name, bgClass]) => (
               <div key={name} className="rounded-md overflow-hidden shadow-card border border-[var(--gray-200)]">
-                <div className="h-16" style={{ background: css }} />
+                <div className={["h-16", bgClass].join(" ")} />
                 <div className="p-3 body">{name}</div>
               </div>
             ))}
@@ -48,9 +52,10 @@ export default function Showcase() {
           </div>
           <div>
             <h3 className="button-text mb-4">Кнопки</h3>
-            <div className="flex flex-wrap gap-3">
-              <button className="button-text h-11 px-5 rounded-md bg-[var(--primary)] text-[var(--white)] shadow-card">Primary</button>
-              <button className="button-text h-11 px-5 rounded-md border border-[var(--gray-300)] text-[var(--text)] bg-transparent">Secondary</button>
+            <div className="flex flex-wrap gap-3 items-center">
+              <Button>Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Badge color="accent">Badge</Badge>
             </div>
           </div>
         </div>
@@ -58,14 +63,14 @@ export default function Showcase() {
         <div>
           <h3 className="button-text mb-4">Карточки</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-lg bg-[var(--white)] shadow-card border border-[var(--gray-200)] p-6">
+            <Card variant="elevated">
               <div className="h2 mb-2">Card</div>
               <p className="body text-[var(--gray-700)]">Белая карточка с тенью и радиусом из токенов.</p>
-            </div>
-            <div className="rounded-lg bg-white/10 backdrop-blur border border-white/20 p-6" style={{ boxShadow: 'var(--shadow-float)' }}>
-              <div className="h2 mb-2">Glass</div>
+            </Card>
+            <GlassCard>
+              <div className="h2 mb-2 text-[var(--white)]">Glass</div>
               <p className="body text-[var(--gray-100)]">Стекло: прозрачный фон + blur + полупрозрачная рамка.</p>
-            </div>
+            </GlassCard>
           </div>
         </div>
 
@@ -79,4 +84,3 @@ export default function Showcase() {
     </Section>
   );
 }
-

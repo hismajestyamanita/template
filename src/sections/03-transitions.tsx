@@ -1,7 +1,7 @@
 import React from 'react';
-import Section from '../shared/layout/Section';
-import Content from '../shared/layout/Content';
-import { EdgeTop, EdgeBottom } from '../shared/layout/Edge';
+import Section from '@/shared/primitives/Section';
+import Content from '@/shared/primitives/Content';
+import Edge from '@/shared/primitives/Edge';
 
 function GuideNote() {
   return (
@@ -23,7 +23,7 @@ export default function Transitions() {
   return (
     <Section bg="white">
       {/* Smooth edge from previous dark */}
-      <EdgeTop colorVar="--black" variant="gradient" />
+      <Edge toColor="black" variant="gradient" position="top" />
       <Content className="text-[var(--text)] py-16 md:py-24" gapY="lg">
         <div>
           <h2 className="h2">Переходы</h2>
@@ -32,9 +32,8 @@ export default function Transitions() {
 
         <div className="space-y-4">
           <div className="h-8 rounded-[var(--r-xl)] bg-[var(--gray-200)]" />
-          <div className="h-8" style={{ background: 'linear-gradient(90deg, rgba(0,0,0,0), var(--gray-200), rgba(0,0,0,0))' }} />
-          <EdgeBottom colorVar="--gray-200" variant="rounded" />
-          <EdgeBottom colorVar="--gray-300" variant="gradient" />
+          <Edge toColor="gray-200" variant="rounded" position="bottom" />
+          <Edge toColor="gray-300" variant="gradient" position="bottom" />
         </div>
 
         <GuideNote />
@@ -42,4 +41,3 @@ export default function Transitions() {
     </Section>
   );
 }
-
