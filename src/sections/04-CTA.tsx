@@ -7,10 +7,7 @@ import Button from '@/components/Button';
 export default function CTA() {
   const [open, setOpen] = useState(false);
   return (
-    <Section
-      bg="white"
-      topEdge={{ variant: 'rounded', from: 'black', to: 'white', position: 'top' }}
-    >
+    <Section bg="white">
       <Content className="text-[var(--text)] items-start">
         <h2 className="h2">Готовы начать?</h2>
         <p className="lead text-[var(--gray-700)]">Оставьте номер — перезвоним и всё настроим</p>

@@ -21,11 +21,7 @@ function GuideNote() {
 
 export default function Transitions() {
   return (
-    <Section
-      bg="black"
-      topEdge={{ variant: 'gradient', from: 'white', to: 'black', position: 'top' }}
-      bottomEdge={{ variant: 'rounded', from: 'black', to: 'white', position: 'bottom' }}
-    >
+    <Section bg="black" bottomEdge={{ variant: 'rounded', from: 'black', to: 'white', position: 'bottom' }}>
       <Content className="text-[var(--white)]">
         <div>
           <h2 className="h2">Переходы</h2>

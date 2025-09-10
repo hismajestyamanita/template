@@ -22,7 +22,6 @@ export default function Section({ bg, id, className = '', topEdge, bottomEdge, c
     <section id={id} className={[
         'relative',
         'overflow-hidden',
-        'py-20 md:py-28',
         className,
       ].join(' ')} style={{ background: bgVar[bg] }}>
       {topEdge ? <Edge {...topEdge} /> : null}

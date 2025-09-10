@@ -8,6 +8,7 @@ export default function Content({ children, className = '' }: Props) {
       className={[
         'w-full mx-auto max-w-content',
         'px-[var(--content-pad-sm)] md:px-[var(--content-pad-md)] lg:px-[var(--content-pad-lg)]',
+        'py-20 md:py-28',
         'flex flex-col',
         'gap-y-space-lg md:gap-y-space-2xl',
         className,

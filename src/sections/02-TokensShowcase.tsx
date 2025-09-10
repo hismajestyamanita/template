@@ -19,11 +19,7 @@ const colorSwatches: Array<[string, string]> = [
 
 export default function Showcase() {
   return (
-    <Section
-      bg="white"
-      topEdge={{ variant: 'rounded', from: 'black', to: 'white', position: 'top' }}
-      bottomEdge={{ variant: 'gradient', from: 'white', to: 'black', position: 'bottom' }}
-    >
+    <Section bg="white" bottomEdge={{ variant: 'gradient', from: 'white', to: 'black', position: 'bottom' }}>
       <Content className="text-[var(--text)]">
         <div>
           <h2 className="h2">Токены дизайна</h2>
