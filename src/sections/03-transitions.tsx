@@ -22,8 +22,6 @@ function GuideNote() {
 export default function Transitions() {
   return (
     <Section bg="white">
-      {/* Smooth edge from previous dark */}
-      <Edge toColor="black" variant="gradient" position="top" />
       <Content className="text-[var(--text)] py-16 md:py-24" gapY="lg">
         <div>
           <h2 className="h2">Переходы</h2>
@@ -38,6 +36,8 @@ export default function Transitions() {
 
         <GuideNote />
       </Content>
+      {/* Real page transition: white -> black */}
+      <Edge toColor="black" variant="gradient" position="bottom" />
     </Section>
   );
 }
