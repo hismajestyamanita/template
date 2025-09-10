@@ -19,8 +19,12 @@ const colorSwatches: Array<[string, string]> = [
 
 export default function Showcase() {
   return (
-    <Section bg="white">
-      <Content className="text-[var(--text)] py-16 md:py-24" gapY="lg">
+    <Section
+      bg="white"
+      topEdge={{ variant: 'rounded', from: 'black', to: 'white', position: 'top' }}
+      bottomEdge={{ variant: 'gradient', from: 'white', to: 'black', position: 'bottom' }}
+    >
+      <Content className="text-[var(--text)]">
         <div>
           <h2 className="h2">Токены дизайна</h2>
           <p className="caption text-[var(--gray-600)]">Цвета, типографика, кнопки и карточки</p>

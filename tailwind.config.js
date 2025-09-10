@@ -40,6 +40,7 @@ export default {
         'space-md': 'var(--space-md)',
         'space-lg': 'var(--space-lg)',
         'space-xl': 'var(--space-xl)',
+        'space-2xl': 'var(--space-2xl)',
         'content-pad-sm': 'var(--content-pad-sm)',
         'content-pad-md': 'var(--content-pad-md)',
         'content-pad-lg': 'var(--content-pad-lg)',

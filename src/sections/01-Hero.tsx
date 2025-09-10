@@ -10,7 +10,11 @@ export default function Hero() {
   const artRef = useReveal<HTMLDivElement>();
 
   return (
-    <Section id="quiz" bg="black">
+    <Section
+      id="quiz"
+      bg="black"
+      bottomEdge={{ variant: 'rounded', from: 'black', to: 'white', position: 'bottom' }}
+    >
       <Content className="text-[var(--white)] items-start" gapY="lg">
         <div ref={titleRef} className="max-w-2xl reveal">
           <h1 className="h1 mb-4 uppercase">
@@ -20,7 +24,7 @@ export default function Hero() {
           <p className="lead text-[var(--gray-200)] mb-6">
             A neutral placeholder lead paragraph without invalid characters.
           </p>
-          <div className="flex gap-3">
+          <div className="flex gap-3 reveal reveal-delay-1">
             <Button variant="primary" size="lg" aria-label="Обсудить проект" onClick={() => {}}>
               Обсудить проект
             </Button>
@@ -31,7 +35,7 @@ export default function Hero() {
         </div>
 
         {/* Visuals */}
-        <div ref={artRef} className="w-full reveal">
+        <div ref={artRef} className="w-full reveal reveal-delay-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             <img
               src="/assets/visuals/01-hero/01-hero-boy-01.webp"
@@ -56,4 +60,3 @@ export default function Hero() {
     </Section>
   );
 }
-

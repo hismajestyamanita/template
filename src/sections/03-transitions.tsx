@@ -1,7 +1,7 @@
 import React from 'react';
 import Section from '@/shared/primitives/Section';
 import Content from '@/shared/primitives/Content';
-import Edge from '@/shared/primitives/Edge';
+import ContentBoundaryHint from '@/components/ContentBoundaryHint';
 
 function GuideNote() {
   return (
@@ -21,8 +21,12 @@ function GuideNote() {
 
 export default function Transitions() {
   return (
-    <Section bg="white">
-      <Content className="text-[var(--text)] py-16 md:py-24" gapY="lg">
+    <Section
+      bg="black"
+      topEdge={{ variant: 'gradient', from: 'white', to: 'black', position: 'top' }}
+      bottomEdge={{ variant: 'rounded', from: 'black', to: 'white', position: 'bottom' }}
+    >
+      <Content className="text-[var(--white)]">
         <div>
           <h2 className="h2">Переходы</h2>
           <p className="caption text-[var(--gray-600)]">Rounded и Gradient варианты</p>
@@ -30,14 +34,11 @@ export default function Transitions() {
 
         <div className="space-y-4">
           <div className="h-8 rounded-[var(--r-xl)] bg-[var(--gray-200)]" />
-          {/* Show only cross-color example here */}
-          <Edge toColor="black" variant="gradient" position="bottom" />
         </div>
 
         <GuideNote />
+        <ContentBoundaryHint />
       </Content>
-      {/* Real page transition: white -> black */}
-      <Edge toColor="black" variant="gradient" position="bottom" />
     </Section>
   );
 }

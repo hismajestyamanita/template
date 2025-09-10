@@ -1,28 +1,33 @@
 import React from 'react';
+import Edge, { EdgeProps } from './Edge';
+
+type BG = 'black' | 'white' | 'gray';
 
 type Props = React.PropsWithChildren<{
-  bg?: keyof typeof BG_KEYS | string; // 'black' | 'white' | keyof colors
-  className?: string;
+  bg: BG;
   id?: string;
+  className?: string;
+  topEdge?: EdgeProps;
+  bottomEdge?: EdgeProps;
 }>;
 
-const BG_KEYS = {
-  black: true,
-  white: true,
-} as const;
+const bgVar: Record<BG, string> = {
+  black: 'var(--black)',
+  white: 'var(--white)',
+  gray: 'var(--gray-50)',
+};
 
-export default function Section({ children, bg = 'bg', className = '', id }: Props) {
+export default function Section({ bg, id, className = '', topEdge, bottomEdge, children }: Props) {
   return (
-    <section
-      id={id}
-      className={[
-        // vertical spacing per spec
-        'py-16 md:py-24',
+    <section id={id} className={[
+        'relative',
+        'overflow-hidden',
+        'py-20 md:py-28',
         className,
-      ].join(' ')}
-      style={{ background: `var(--${String(bg)})` }}
-    >
+      ].join(' ')} style={{ background: bgVar[bg] }}>
+      {topEdge ? <Edge {...topEdge} /> : null}
       {children}
+      {bottomEdge ? <Edge {...bottomEdge} /> : null}
     </section>
   );
 }

@@ -1,44 +1,38 @@
 import React from 'react';
 
-type Variant = 'rounded' | 'gradient';
-type Position = 'top' | 'bottom';
+export type Variant = 'rounded' | 'gradient';
+export type Position = 'top' | 'bottom';
+export type EdgeColor = 'black' | 'white' | 'gray';
 
-type EdgeProps = {
-  toColor: string; // keyof colors as CSS var name (e.g., 'white', 'black', 'gray-200')
-  variant?: Variant;
-  position?: Position;
+export type EdgeProps = {
+  variant: Variant;
+  from: EdgeColor;
+  to: EdgeColor;
+  position: Position;
   className?: string;
 };
 
-export default function Edge({ toColor, variant = 'rounded', position = 'bottom', className = '' }: EdgeProps) {
-  const common = ['w-full', 'h-16'].join(' ');
+const colorVarMap: Record<EdgeColor, string> = {
+  black: 'var(--black)',
+  white: 'var(--white)',
+  gray: 'var(--gray-200)',
+};
+
+export default function Edge({ variant, from, to, position, className = '' }: EdgeProps) {
+  const common = ['block', 'leading-[0]', 'relative', 'w-screen', 'h-[64px]', 'max-w-none', className].join(' ');
+
   if (variant === 'gradient') {
-    // Fade from current section (transparent) to the next section color at the edge side
     const dir = position === 'top' ? 'to top' : 'to bottom';
-    const gradient = position === 'top'
-      ? `linear-gradient(${dir}, rgba(0,0,0,0), var(--${toColor}))`
-      : `linear-gradient(${dir}, rgba(0,0,0,0), var(--${toColor}))`;
-    return (
-      <div
-        aria-hidden
-        className={[common, className].join(' ')}
-        style={{ background: gradient }}
-      />
-    );
+    const bg = `linear-gradient(${dir}, ${colorVarMap[from]}, ${colorVarMap[to]})`;
+    const translateClass = position === 'top' ? '-translate-y-px' : 'translate-y-px';
+    return <div aria-hidden className={[common, 'will-change-transform', translateClass].join(' ')} style={{ background: bg, backfaceVisibility: 'hidden' }} />;
   }
 
-  // For a bottom edge we want a pill with rounded TOP corners (visible inside current section),
-  // for a top edge — rounded BOTTOM corners.
+  // Rounded: solid block of `to` color with rounded corners towards the inside of current section
   const radiusStyle =
     position === 'bottom'
       ? { borderTopLeftRadius: 'var(--r-2xl)', borderTopRightRadius: 'var(--r-2xl)' }
       : { borderBottomLeftRadius: 'var(--r-2xl)', borderBottomRightRadius: 'var(--r-2xl)' };
 
-  return (
-    <div
-      aria-hidden
-      className={[common, className].join(' ')}
-      style={{ background: `var(--${toColor})`, ...radiusStyle }}
-    />
-  );
+  return <div aria-hidden className={common} style={{ background: colorVarMap[to], ...radiusStyle }} />;
 }
