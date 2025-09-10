@@ -7,7 +7,9 @@
 @tailwind utilities;
 
 @layer base {
+  *, *::before, *::after { box-sizing: border-box; }
   html, body, #root { height: 100%; }
+  html, body { overflow-x: hidden; }
   body {
     font-family: 'Manrope', sans-serif;
     color: var(--text);

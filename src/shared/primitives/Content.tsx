@@ -6,7 +6,7 @@ export default function Content({ children, className = '' }: Props) {
   return (
     <div
       className={[
-        'w-full mx-auto max-w-content',
+        'w-full mx-auto max-w-content box-border',
         'px-[var(--content-pad-sm)] md:px-[var(--content-pad-md)] lg:px-[var(--content-pad-lg)]',
         'py-20 md:py-28',
         'flex flex-col',
