@@ -1,9 +1,9 @@
 ﻿@import './shared/styles/tokens.css';
+@import './shared/styles/typography.css';
+@import './shared/styles/reveal.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './shared/styles/typography.css';
-@import './shared/styles/reveal.css';
 
 @layer base {
   html, body, #root { height: 100%; }
@@ -13,5 +13,4 @@
     background: var(--bg);
   }
 }
-
 
