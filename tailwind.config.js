@@ -28,6 +28,7 @@ export default {
         md: 'var(--r-md)',
         lg: 'var(--r-lg)',
         xl: 'var(--r-xl)',
+        '2xl': 'var(--r-2xl)',
       },
       boxShadow: {
         card: 'var(--shadow-card)',
@@ -53,4 +54,3 @@ export default {
   },
   plugins: [],
 };
-

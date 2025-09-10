@@ -13,20 +13,24 @@ type EdgeProps = {
 export default function Edge({ toColor, variant = 'rounded', position = 'bottom', className = '' }: EdgeProps) {
   const common = ['w-full', 'h-16'].join(' ');
   if (variant === 'gradient') {
+    // Fade from current section (transparent) to the next section color at the edge side
     const dir = position === 'top' ? 'to top' : 'to bottom';
+    const gradient = position === 'top'
+      ? `linear-gradient(${dir}, rgba(0,0,0,0), var(--${toColor}))`
+      : `linear-gradient(${dir}, rgba(0,0,0,0), var(--${toColor}))`;
     return (
       <div
         aria-hidden
         className={[common, className].join(' ')}
-        style={{ background: `linear-gradient(${dir}, var(--${toColor}), rgba(0,0,0,0))` }}
+        style={{ background: gradient }}
       />
     );
   }
 
   const radiusStyle =
     position === 'top'
-      ? { borderTopLeftRadius: 'var(--r-xl)', borderTopRightRadius: 'var(--r-xl)' }
-      : { borderBottomLeftRadius: 'var(--r-xl)', borderBottomRightRadius: 'var(--r-xl)' };
+      ? { borderTopLeftRadius: 'var(--r-2xl)', borderTopRightRadius: 'var(--r-2xl)' }
+      : { borderBottomLeftRadius: 'var(--r-2xl)', borderBottomRightRadius: 'var(--r-2xl)' };
 
   return (
     <div

@@ -30,8 +30,8 @@ export default function Transitions() {
 
         <div className="space-y-4">
           <div className="h-8 rounded-[var(--r-xl)] bg-[var(--gray-200)]" />
-          <Edge toColor="gray-200" variant="rounded" position="bottom" />
-          <Edge toColor="gray-300" variant="gradient" position="bottom" />
+          {/* Show only cross-color example here */}
+          <Edge toColor="black" variant="gradient" position="bottom" />
         </div>
 
         <GuideNote />
