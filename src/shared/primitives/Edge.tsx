@@ -27,8 +27,10 @@ export default function Edge({ toColor, variant = 'rounded', position = 'bottom'
     );
   }
 
+  // For a bottom edge we want a pill with rounded TOP corners (visible inside current section),
+  // for a top edge — rounded BOTTOM corners.
   const radiusStyle =
-    position === 'top'
+    position === 'bottom'
       ? { borderTopLeftRadius: 'var(--r-2xl)', borderTopRightRadius: 'var(--r-2xl)' }
       : { borderBottomLeftRadius: 'var(--r-2xl)', borderBottomRightRadius: 'var(--r-2xl)' };
 
