@@ -23,6 +23,18 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // Guardrails against raw colors/shadows. Use tokens instead.
+      'no-restricted-syntax': [
+        'warn',
+        {
+          selector: "Literal[value=/^#[0-9A-Fa-f]{3,6}$/]",
+          message: 'Do not use raw hex colors. Use CSS variables/tokens.',
+        },
+        {
+          selector: "Property[key.name='boxShadow']",
+          message: 'Use token shadows via Tailwind classes (shadow-card, shadow-float).',
+        },
+      ],
     },
   }
 );

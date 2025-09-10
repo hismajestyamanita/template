@@ -5,6 +5,10 @@ import Button from '@/components/Button';
 import Card from '@/components/Card';
 import GlassCard from '@/components/GlassCard';
 import Badge from '@/components/Badge';
+import Slider from '@/components/Slider';
+import Accordion from '@/components/Accordion';
+import Modal from '@/shared/primitives/Modal';
+import { useState } from 'react';
 
 const colorSwatches: Array<[string, string]> = [
   ['primary', 'bg-[var(--primary)]'],
@@ -18,6 +22,7 @@ const colorSwatches: Array<[string, string]> = [
 ];
 
 export default function Showcase() {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <Section bg="white" bottomEdge={{ variant: 'gradient', from: 'white', to: 'black', position: 'bottom' }}>
       <Content className="text-[var(--text)]">
@@ -56,6 +61,7 @@ export default function Showcase() {
               <Button>Primary</Button>
               <Button variant="secondary">Secondary</Button>
               <Badge color="accent">Badge</Badge>
+              <Button variant="secondary" onClick={() => setModalOpen(true)}>Открыть демо‑модалку</Button>
             </div>
           </div>
         </div>
@@ -75,12 +81,40 @@ export default function Showcase() {
         </div>
 
         <div>
+          <h3 className="button-text mb-4">Слайдер</h3>
+          <Slider className="reveal" options={{ align: 'start', loop: true }}>
+            {[1,2,3,4].map((i) => (
+              <Card key={i} variant="elevated">
+                <div className="h2 mb-2">Слайд {i}</div>
+                <p className="body text-[var(--gray-700)]">Пример карточки внутри слайдера на embla.</p>
+              </Card>
+            ))}
+          </Slider>
+        </div>
+
+        <div>
+          <h3 className="button-text mb-4">Accordion</h3>
+          <Accordion items={[
+            { id: 'a', title: 'Что такое Content?', content: 'Контейнер с max-width 1200px, паддинги 16/24/32 и ровный gap.' },
+            { id: 'b', title: 'Где токены?', content: 'src/shared/design/* и CSS-переменные в styles/tokens.css.' },
+          ]} />
+        </div>
+
+        <div>
           <h3 className="button-text mb-2">Как использовать</h3>
           <pre className="rounded-md bg-[var(--gray-900)] text-[var(--gray-50)] p-4 overflow-auto text-sm">
 {`<button className="h-11 px-5 rounded-md bg-[var(--primary)] text-[var(--white)]">CTA</button>`}
           </pre>
         </div>
       </Content>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} labelledBy="demo-modal-title">
+        <h3 id="demo-modal-title" className="h2 mb-2">Демо‑модалка</h3>
+        <p className="body text-[var(--gray-700)]">Это пример модального окна на примитиве Modal с порталом, фокус‑трапом и a11y.</p>
+        <div className="mt-4 flex gap-2">
+          <Button onClick={() => setModalOpen(false)}>Закрыть</Button>
+          <Button variant="secondary">Вторичная</Button>
+        </div>
+      </Modal>
     </Section>
   );
 }
