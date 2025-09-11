@@ -29,6 +29,8 @@ export default function UnifiedSignupModal({ open, onClose, source = 'unified-si
     }
   }
 
+  const canSubmit = phone.replace(/\D/g, '').length === 10 && !isSubmitting;
+
   return (
     <div
       className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-6"
@@ -51,7 +53,7 @@ export default function UnifiedSignupModal({ open, onClose, source = 'unified-si
             <PhoneInput value={phone} onChange={setPhone} />
           </div>
           <input className="w-full rounded-md border border-[var(--gray-300)] px-4 py-3 bg-transparent" placeholder="Программа" value={program} onChange={(e) => setProgram(e.target.value)} aria-label="Программа" />
-          <button disabled={isSubmitting} className="button-text mt-2 h-12 rounded-md bg-[var(--primary)] text-[var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--white)]">
+          <button disabled={!canSubmit} className="button-text mt-2 h-12 rounded-md bg-[var(--primary)] text-[var(--white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--white)] disabled:opacity-60 disabled:cursor-not-allowed">
             {isSubmitting ? 'Отправка…' : 'Записаться'}
           </button>
         </form>

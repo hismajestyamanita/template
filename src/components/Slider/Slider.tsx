@@ -5,15 +5,18 @@ type Props = {
   options?: EmblaOptionsType;
   children: React.ReactNode[] | React.ReactNode;
   className?: string;
+  autoplay?: boolean;
+  intervalMs?: number;
 };
 
 const dotBase = 'w-2 h-2 rounded-full bg-[var(--gray-300)] aria-[current=true]:bg-[var(--primary)]';
 const arrowBase = 'button-text inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--white)] text-[var(--text)] shadow-card border border-[var(--gray-200)] hover:bg-[var(--gray-50)]';
 
-const Slider: React.FC<Props> = ({ options, children, className = '' }) => {
+const Slider: React.FC<Props> = ({ options, children, className = '', autoplay = true, intervalMs = 4000 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [hovered, setHovered] = useState(false);
 
   const onSelect = useCallback((api: EmblaCarouselType) => {
     setSelectedIndex(api.selectedScrollSnap());
@@ -25,8 +28,23 @@ const Slider: React.FC<Props> = ({ options, children, className = '' }) => {
     emblaApi.on('select', () => onSelect(emblaApi));
   }, [emblaApi, onSelect]);
 
+  useEffect(() => {
+    if (!emblaApi || !autoplay) return;
+    let t: number | undefined;
+    const tick = () => {
+      t = window.setTimeout(() => {
+        if (!hovered) emblaApi.scrollNext();
+        tick();
+      }, intervalMs);
+    };
+    tick();
+    return () => {
+      if (t) clearTimeout(t);
+    };
+  }, [emblaApi, autoplay, intervalMs, hovered]);
+
   return (
-    <div className={['w-full', className].join(' ')}>
+    <div className={['w-full', className].join(' ')} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <div className="relative" aria-roledescription="carousel">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
@@ -60,4 +78,3 @@ const Slider: React.FC<Props> = ({ options, children, className = '' }) => {
 };
 
 export default Slider;
-

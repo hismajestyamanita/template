@@ -12,8 +12,16 @@ const byVariant: Record<Variant, string> = {
 };
 
 const Card: React.FC<Props> = ({ variant = 'plain', className = '', ...rest }) => (
-  <div className={['rounded-lg p-6', byVariant[variant], className].join(' ')} {...rest} />
+  <div
+    className={[
+      'rounded-lg p-6',
+      'transition-transform duration-200 will-change-transform',
+      'hover:-translate-y-0.5',
+      byVariant[variant],
+      className,
+    ].join(' ')}
+    {...rest}
+  />
 );
 
 export default Card;
-
