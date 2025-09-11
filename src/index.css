@@ -10,6 +10,7 @@
   *, *::before, *::after { box-sizing: border-box; }
   html, body, #root { height: 100%; }
   html, body { overflow-x: hidden; }
+  img, video { max-width: 100%; height: auto; display: block; }
   body {
     font-family: 'Manrope', sans-serif;
     color: var(--text);
